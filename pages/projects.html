@@ -1,10 +1,113 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои проекты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
-$END$
+<header class="header text-center py-4 shadow-sm bg-white">
+    <div class="container">
+        <img src="../images/logo.png" alt="Логотип" class="header__logo mb-2">
+        <h1 class="header__title">Демина Екатерина</h1>
+        <nav class="nav justify-content-center mt-3">
+            <a href="../index.html" class="nav__link">Главная</a>
+            <a href="projects.html" class="nav__link nav__link--active">Проекты</a>
+            <a href="diary.html" class="nav__link">Дневник</a>
+            <a href="contacts.html" class="nav__link">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container my-5">
+    <section class="section-card p-4">
+        <h2 class="section-title text-center mb-4">Мои проекты</h2>
+
+        <!-- Фильтры -->
+        <div class="text-center mb-4">
+            <button class="btn btn-outline-primary me-2 filter-btn active" data-filter="all">Все</button>
+            <button class="btn btn-outline-secondary me-2 filter-btn" data-filter="html">HTML</button>
+            <button class="btn btn-outline-success me-2 filter-btn" data-filter="js">JS</button>
+            <button class="btn btn-outline-warning filter-btn" data-filter="react">React</button>
+        </div>
+
+        <!-- Карточки проектов -->
+        <div class="row g-4" id="projects-container">
+
+            <div class="col-md-6 col-lg-4 project-card-container" data-category="html">
+                <a href="https://plovika.github.io/kr1site/index.html" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Личный сайт</h5>
+                    <p class="card-text">HTML, CSS</p>
+                </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4 project-card-container" data-category="js">
+                <a href="https://app.weeek.net/sign-up?lang=ru&utm_source=blog&utm_medium=link&utm_campaign=best-to-do-list-apps" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Todo-приложение</h5>
+                        <p class="card-text">JavaScript</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4 project-card-container" data-category="react">
+                <a href="https://react-shop-demo.netlify.app" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Интернет-магазин</h5>
+                        <p class="card-text">React</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4 project-card-container" data-category="bootstrap">
+                <a href="https://plovika.github.io/kr1site/index.html" target="_blank" class="card project-card shadow-sm text-decoration-none">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Портфолио</h5>
+                    <p class="card-text">Bootstrap</p>
+                </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer class="footer text-center py-3 bg-white border-top shadow-sm">
+    <p>© 2025 Контакты</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Скрипт фильтрации -->
+<script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card-container');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Убираем активность со всех кнопок
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+
+                if (filter === 'all' || category === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

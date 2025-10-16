@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+<header class="header text-center py-4 shadow-sm bg-white">
+    <div class="container">
+        <img src="../images/logo.png" alt="Логотип" class="header__logo mb-2">
+        <h1 class="header__title">Демина Екатерина</h1>
+        <nav class="nav justify-content-center mt-3">
+            <a href="../index.html" class="nav__link">Главная</a>
+            <a href="projects.html" class="nav__link">Проекты</a>
+            <a href="diary.html" class="nav__link">Дневник</a>
+            <a href="contacts.html" class="nav__link nav__link--active">Контакты</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container my-5">
+    <section class="section-card p-4">
+        <h2 class="section-title text-center mb-4">Свяжитесь со мной</h2>
+
+        <form class="contact-form mx-auto" style="max-width: 500px;">
+            <div class="mb-3">
+                <label class="form-label">Имя</label>
+                <input type="text" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Сообщение</label>
+                <textarea class="form-control" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Отправить сообщение</button>
+        </form>
+
+        <div class="contacts mt-5 text-center">
+            <p>demaaa@gmail.com</p>
+            <p>
+                GitHub:
+                <a href="https://github.com/Plovika" target="_blank" class="contact-link">
+                    Katushka
+                </a>
+            </p>
+            <p>Москва, Россия</p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer text-center py-3 bg-white border-top shadow-sm">
+    <p>© 2025 Контакты</p>
+</footer>
+</body>
+</html>
