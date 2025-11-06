@@ -2,75 +2,66 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Учебный дневник</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../styles/styles.css">
+    <meta name="description" content="Дневник для учебного прогресса!">
 </head>
 <body>
-<header class="header text-center py-4 shadow-sm bg-white">
+<a href="#main" class="skip-link">К содержимому</a>
+
+<header class="header text-center py-4 shadow-sm bg-white sticky-top" role="banner">
     <div class="container">
         <img src="../images/logo.png" alt="Логотип" class="header__logo mb-2">
-        <h1 class="header__title">Демина Екатерина</h1>
-        <nav class="nav justify-content-center mt-3">
+        <h1 class="header__title">Дёмина Екатерина</h1>
+        <nav class="nav justify-content-center mt-3" aria-label="Главная навигация">
             <a href="../index.html" class="nav__link">Главная</a>
             <a href="projects.html" class="nav__link">Проекты</a>
-            <a href="diary.html" class="nav__link nav__link--active">Дневник</a>
+            <a href="diary.html" class="nav__link nav__link--active" aria-current="page">Дневник</a>
             <a href="contacts.html" class="nav__link">Контакты</a>
         </nav>
     </div>
 </header>
 
-<main class="container my-5">
+<main id="main" class="container my-5" role="main" aria-labelledby="diary-title">
     <section class="section-card p-4">
-        <h2 class="section-title text-center mb-4">Мой учебный прогресс</h2>
+        <h2 id="diary-title" class="section-title text-center mb-4">Мой учебный прогресс</h2>
 
-        <!-- Список записей -->
-        <div id="progress-list" class="list-group mb-5">
-            <div class="list-group-item">2025-10-14 — Верстка макета сайт(100%)</div>
-            <div class="list-group-item">2025-10-13 — JavaScript основы(50%)</div>
+        <div id="progress-list" class="list-group mb-5" aria-live="polite" aria-atomic="true">
+            <div class="list-group-item">2025-10-14 — Верстка макета сайта (100%)</div>
+            <div class="list-group-item">2025-10-13 — JavaScript основы (50%)</div>
             <div class="list-group-item">2025-10-10 — Работа с формами (75%)</div>
         </div>
-        <!-- Курсы -->
-        <h2 class="section-title text-center mb-4">Текущие курсы</h2>
-        <p>Веб-разработка</p>
-        <div class="progress mb-3"><div class="progress-bar bg-success" style="width: 90%">90%</div></div>
-        <p>JavaScript</p>
-        <div class="progress mb-3"><div class="progress-bar bg-info" style="width: 70%">70%</div></div>
-        <p>React</p>
-        <div class="progress mb-3"><div class="progress-bar bg-warning" style="width: 50%">50%</div></div>
 
-        <!-- Кнопка -->
         <div class="text-center mt-4">
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEntryModal">
-                Добавить запись
-            </button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEntryModal" id="openAddEntryBtn">Добавить запись</button>
         </div>
     </section>
 </main>
 
-<!-- Модальное окно -->
+<!-- Modal -->
 <div class="modal fade" id="addEntryModal" tabindex="-1" aria-labelledby="addEntryModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content section-card">
+        <div class="modal-content section-card" role="dialog" aria-modal="true" aria-labelledby="addEntryModalLabel" tabindex="-1">
             <div class="modal-header">
                 <h5 class="modal-title" id="addEntryModalLabel">Добавить новую запись</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
             <div class="modal-body">
-                <form id="addEntryForm">
+                <form id="addEntryForm" novalidate>
                     <div class="mb-3">
                         <label for="taskDate" class="form-label">Дата</label>
-                        <input type="date" class="form-control" id="taskDate" required>
+                        <input type="date" class="form-control" id="taskDate" required aria-required="true">
                         <div class="invalid-feedback">Введите корректную дату (не позднее сегодняшнего дня).</div>
                     </div>
                     <div class="mb-3">
                         <label for="taskName" class="form-label">Название задачи</label>
-                        <input type="text" class="form-control" id="taskName" placeholder="Например: Изучить адаптивную вёрстку" required>
+                        <input type="text" class="form-control" id="taskName" required aria-required="true">
                     </div>
                     <div class="mb-3">
                         <label for="taskProgress" class="form-label">Прогресс (%)</label>
-                        <input type="number" class="form-control" id="taskProgress" min="0" max="100" placeholder="Например: 75" required>
+                        <input type="number" class="form-control" id="taskProgress" min="0" max="100" required aria-required="true">
                         <div class="invalid-feedback">Введите число от 0 до 100.</div>
                     </div>
                     <button type="submit" class="btn btn-success w-100">Добавить</button>
@@ -80,51 +71,116 @@
     </div>
 </div>
 
-<footer class="footer text-center py-3 bg-white border-top shadow-sm">
-    <p>© 2025 Контакты</p>
+<footer class="footer text-center py-3 bg-white border-top shadow-sm" role="contentinfo">
+    <p>© 2025 <a href="../pages/contacts.html" class="text-decoration-none text-primary fw-semibold">Контакты</a></p>
 </footer>
 
-<!-- Bootstrap и скрипт -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    const addEntryForm = document.getElementById('addEntryForm');
-    const progressList = document.getElementById('progress-list');
-    const taskDate = document.getElementById('taskDate');
-    const taskName = document.getElementById('taskName');
-    const taskProgress = document.getElementById('taskProgress');
-    const modal = new bootstrap.Modal(document.getElementById('addEntryModal'));
+    (function () {
+        const addEntryForm = document.getElementById('addEntryForm');
+        const progressList = document.getElementById('progress-list');
+        const taskDate = document.getElementById('taskDate');
+        const taskName = document.getElementById('taskName');
+        const taskProgress = document.getElementById('taskProgress');
+        const modalEl = document.getElementById('addEntryModal');
+        const modal = new bootstrap.Modal(modalEl);
+        const openBtn = document.getElementById('openAddEntryBtn');
 
-    addEntryForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+        // Utility: hide main content from screen readers while modal open
+        function setBackgroundAriaHidden(hidden) {
+            // hide header, main (except modal), footer from screen readers when modal open
+            const selectors = ['header', 'main', 'footer'];
+            selectors.forEach(sel => {
+                document.querySelectorAll(sel).forEach(el => {
+                    if (hidden) {
+                        // don't hide the modal itself or overlay
+                        if (!el.closest('.modal')) el.setAttribute('aria-hidden', 'true');
+                    } else {
+                        el.removeAttribute('aria-hidden');
+                    }
+                });
+            });
+        }
 
-        // Проверка даты (не позже сегодняшнего дня)
-        const today = new Date().toISOString().split('T')[0];
-        if (taskDate.value === '' || taskDate.value > today) {
-            taskDate.classList.add('is-invalid');
-            return;
-        } else {
+        // When modal opens, set aria-hidden and focus management
+        modalEl.addEventListener('shown.bs.modal', () => {
+            setBackgroundAriaHidden(true);
+            // move focus to first input
+            taskDate.focus();
+            // add keydown handler for focus trap / escape (bootstrap handles escape by default)
+            modalEl.addEventListener('keydown', trapFocus);
+        });
+
+        modalEl.addEventListener('hidden.bs.modal', () => {
+            modalEl.removeEventListener('keydown', trapFocus);
+            setBackgroundAriaHidden(false);
+            // return focus to the button that opened modal
+            openBtn.focus();
+        });
+
+        // Focus trap inside modal
+        function trapFocus(e) {
+            if (e.key !== 'Tab') return;
+            const focusable = modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (!focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+
+        addEntryForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const today = new Date().toISOString().split('T')[0];
+
+            // reset validation states
             taskDate.classList.remove('is-invalid');
-        }
-
-        // Проверка прогресса
-        if (taskProgress.value < 0 || taskProgress.value > 100 || taskProgress.value === '') {
-            taskProgress.classList.add('is-invalid');
-            return;
-        } else {
             taskProgress.classList.remove('is-invalid');
-        }
 
-        // Добавляем запись в список
-        const entry = document.createElement('div');
-        entry.classList.add('list-group-item');
-        entry.textContent = `${taskDate.value} — ${taskName.value} (${taskProgress.value}%)`;
-        progressList.prepend(entry);
+            let valid = true;
 
-        // Очистка формы и закрытие модального окна
-        addEntryForm.reset();
-        modal.hide();
-    });
+            if (taskDate.value === '' || taskDate.value > today) {
+                taskDate.classList.add('is-invalid');
+                valid = false;
+            }
+            if (taskProgress.value === '' || Number(taskProgress.value) < 0 || Number(taskProgress.value) > 100) {
+                taskProgress.classList.add('is-invalid');
+                valid = false;
+            }
+            if (!valid) {
+                const firstError = addEntryForm.querySelector('.is-invalid');
+                if (firstError) firstError.focus();
+                return;
+            }
+
+            const entry = document.createElement('div');
+            entry.classList.add('list-group-item');
+            entry.setAttribute('tabindex', '-1');
+            entry.textContent = `${taskDate.value} — ${taskName.value} (${taskProgress.value}%)`;
+            progressList.prepend(entry);
+
+            addEntryForm.reset();
+            modal.hide();
+
+            // announce to screen readers via aria-live on progressList (already present)
+            setTimeout(() => { entry.focus(); }, 100);
+        });
+
+        [taskDate, taskName, taskProgress].forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.classList.contains('is-invalid')) {
+                    input.classList.remove('is-invalid');
+                }
+            });
+        });
+    })();
 </script>
 </body>
 </html>
